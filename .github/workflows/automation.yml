@@ -38,3 +38,10 @@ jobs:
           name: failed-zotero-items
           path: /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/zotero2readwise/failed_zotero_items.json
         if: always()
+
+      - name: Upload Error Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-log
+          path: error_log_400_failed_post_request_to_readwise.json
+        if: always()
