@@ -30,9 +30,11 @@ jobs:
       
       - name: 🚀 Run Automation
         run: python run.py ${{ secrets.READWISE_TOKEN }} ${{ secrets.ZOTERO_KEY }} ${{ secrets.ZOTERO_ID }}
+        continue-on-error: true
       
       - name: Upload failed Zotero items file
         uses: actions/upload-artifact@v3
         with:
           name: failed-zotero-items
           path: /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/zotero2readwise/failed_zotero_items.json
+        if: always()
